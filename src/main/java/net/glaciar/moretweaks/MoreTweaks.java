@@ -9,12 +9,18 @@ import net.glaciar.moretweaks.recipes.RecipeBundle;
 public class MoreTweaks extends JavaPlugin
 {
   private static final Logger LOGGER=Logger.getLogger("bundles");
+  private static MoreTweaks INSTANCE;
+
 
   public void onEnable()
   {
+    
+    INSTANCE = this;
+
+    RecipeBundle bundleRecipe = new RecipeBundle();
+    bundleRecipe.register();
 
     LOGGER.info("MoreTweaks plugin enabled");
-    new RecipeBundle(this);
 
   }
 
@@ -22,4 +28,9 @@ public class MoreTweaks extends JavaPlugin
   {
     LOGGER.info("MoreTweaks plugin disabled");
   }
+
+  public static MoreTweaks getInstance() {
+    return INSTANCE;
+  }
+
 }

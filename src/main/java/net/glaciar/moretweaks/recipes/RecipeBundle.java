@@ -9,12 +9,12 @@ import org.bukkit.inventory.meta.BundleMeta;
 
 import net.glaciar.moretweaks.MoreTweaks;
 
-public class RecipeBundle extends ShapedRecipe {
+public final class RecipeBundle extends ShapedRecipe {
 
     private final static ItemStack output = new ItemStack(Material.BUNDLE);
 
-    public RecipeBundle(MoreTweaks plugin) {
-        super(new NamespacedKey(plugin, "bundle"), output);
+    public RecipeBundle() {
+        super(new NamespacedKey(MoreTweaks.getInstance(), "bundle"), output);
 
         BundleMeta meta = (BundleMeta) output.getItemMeta();
 
@@ -22,7 +22,13 @@ public class RecipeBundle extends ShapedRecipe {
         super.setIngredient('S', Material.STRING);
         super.setIngredient('F', Material.RABBIT_HIDE);
 
-        plugin.getServer().addRecipe(this);
+
+    }
+
+    public void register() {
+
+        MoreTweaks.getInstance().getServer().addRecipe(this);
+
     }
 
 }
